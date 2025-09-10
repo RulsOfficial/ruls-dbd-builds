@@ -10,8 +10,7 @@ Este proyecto se inspira fuertemente en el repositorio de [Mr.Tipson](https://gi
 
 1. Abre un **codespace** del repositorio.  
 
-2. Ejecuta los siguientes comandos:  
-**chmod +x update.sh**
-**./update.sh**
+2. Ejecuta el siguiente comando:  
+**chmod +x update.sh ; ./update.sh**
 
 ---
