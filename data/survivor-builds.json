@@ -18,5 +18,20 @@
         "name": "Chase Build",
         "perks": ["Alert", "Kindred", "Sprint Burst", "Windows of Opportunity"],
         "group": "Solo Queue"
+    },
+    {
+        "name": "Test Build",
+        "perks": ["Alert", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "Test Build",
+        "perks": ["Alert", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+        "group": "SWF"
+    },
+    {
+        "name": "Test Build",
+        "perks": ["Alert", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+        "group": "Test Group"
     }
 ]
