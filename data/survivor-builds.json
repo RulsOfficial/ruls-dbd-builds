@@ -7,12 +7,12 @@
     {
         "name": "Heavy Info Build",
         "perks": ["Open-Handed", "Kindred", "Sprint Burst", "Resurgence"],
-        "group": "PWF"
+        "group": "SWF"
     },
     {
         "name": "Gen Build",
         "perks": ["Prove Thyself", "Déjà Vu", "Chemical Trap", "Resurgence"],
-        "group": "PWF"
+        "group": "SWF"
     },
     {
         "name": "Chase Build",

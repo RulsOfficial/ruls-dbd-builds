@@ -13,10 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const killerSidebar = document.getElementById('killerSidebar');
 
     // 🔹 Diccionario de portraits de survivors
-    const survivorPortraits = {
-      "Solo Queue": "https://deadbydaylight.wiki.gg/images/S41_SableWard_Portrait.png?78936e",
-      "PWF": "https://deadbydaylight.wiki.gg/images/S09_FengMin_Portrait.png?4858fc"
-    };
+    const survivorPortraits = await fetch('./data/survivor-groups.json?v=' + Date.now()).then(r => r.json())
 
           // 🔹 Agrupar survivors por group
     const survivorsGrouped = {};
