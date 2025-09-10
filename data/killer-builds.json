@@ -7,16 +7,26 @@
     {
         "name": "Build Killer Aleatorio",
         "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
-        "killer": "Nurse"
+        "killer": "Plague"
     },
     {
         "name": "Build Killer Aleatorio",
         "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
-        "killer": "Nurse"
+        "killer": "Danny Johnson"
     },
     {
         "name": "Build Killer Aleatorio",
         "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
-        "killer": "Nurse"
+        "killer": "Huntress"
+    },
+    {
+        "name": "Build Killer Aleatorio",
+        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
+        "killer": "Huntress"
+    },
+    {
+        "name": "Build Killer Aleatorio",
+        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
+        "killer": "Frank, Julie, Susie, Joey"
     }
 ]
