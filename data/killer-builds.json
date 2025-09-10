@@ -12,7 +12,7 @@
     {
         "name": "Build Killer Aleatorio",
         "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
-        "killer": "Danny Johnson"
+        "killer": "Ghost Face"
     },
     {
         "name": "Build Killer Aleatorio",
@@ -27,6 +27,6 @@
     {
         "name": "Build Killer Aleatorio",
         "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
-        "killer": "Frank, Julie, Susie, Joey"
+        "killer": "Legion"
     }
 ]
