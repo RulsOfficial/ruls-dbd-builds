@@ -8,8 +8,8 @@ Este proyecto se inspira fuertemente en el repositorio de [Mr.Tipson](https://gi
 
 ## Personalización
 
-- Modificando los archivos `survivor-builds.json` y `killer-builds.json` puedes crear y poner tus propias builds.  
-- En `survivor-groups.json` puedes crear grupos y asignar imágenes para separar las builds de survivor por categorías.
+- Modificando los archivos `survivor-builds.json` y `killer-builds.json` puedes agregar tus propias builds.  
+- En `survivor-groups.json` puedes crear grupos para separar las builds de survivor por categorías.
 
 ---
 
