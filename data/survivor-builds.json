@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Heavy Info Build",
+        "perks": ["Open-Handed", "Kindred", "Sprint Burst", "Still Sight"],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "Heavy Info Build",
+        "perks": ["Open-Handed", "Kindred", "Sprint Burst", "Resurgence"],
+        "group": "PWF"
+    },
+    {
+        "name": "Gen Build",
+        "perks": ["Prove Thyself", "Déjà Vu", "Chemical Trap", "Resurgence"],
+        "group": "PWF"
+    },
+    {
+        "name": "Chase Build",
+        "perks": ["Alert", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+        "group": "Solo Queue"
+    }
+]
