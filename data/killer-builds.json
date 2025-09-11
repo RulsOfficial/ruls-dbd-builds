@@ -1,32 +1,27 @@
 [
     {
         "name": "Gen Control Build",
-        "perks": ["Surveillance", "Oppression", "Alien Instinct", "Scourge Hook: Pain Resonance"],
+        "perks": ["Surveillance", "Oppression", "Ultimate Weapon", "Scourge Hook: Pain Resonance"],
         "killer": "Trickster"
     },
     {
-        "name": "Build Killer Aleatorio",
-        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
+        "name": "Obssesion Build",
+        "perks": ["Friends 'Til The End", "Barbacue & Chili", "Furtive Chase", "Scourge Hook: Pain Resonance"],
         "killer": "Plague"
     },
     {
-        "name": "Build Killer Aleatorio",
-        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
-        "killer": "Ghost Face"
-    },
-    {
-        "name": "Build Killer Aleatorio",
-        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
+        "name": "Sneaky Info Build",
+        "perks": ["Nowhere To Hide", "I'm All Ears", "Trail of Torment", "Scourge Hook: Pain Resonance"],
         "killer": "Executioner"
     },
     {
-        "name": "Build Killer Aleatorio",
-        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
+        "name": "Generic Build",
+        "perks": ["Iron Maiden", "Barbacue & Chili", "Ultimate Weapon", "Scourge Hook: Pain Resonance"],
         "killer": "Huntress"
     },
     {
-        "name": "Build Killer Aleatorio",
-        "perks": ["Iron Grasp", "Agitation", "Call of Brine", "Discordance"],
+        "name": "Exhaustion Build",
+        "perks": ["Septic Touch", "Overwhelming Presence", "Blood Echo", "Scourge Hook: Pain Resonance"],
         "killer": "Legion"
     }
 ]
