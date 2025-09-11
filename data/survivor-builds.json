@@ -18,5 +18,25 @@
         "name": "Chase Build",
         "perks": ["Finesse", "Kindred", "Sprint Burst", "Windows of Opportunity"],
         "group": "Solo Queue"
+    },
+    {
+        "name": "Schizo Build",
+        "perks": ["Deception", "Diversion", "Mirrored Illusion", "Red Herring"],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "Gen Awareness Build",
+        "perks": ["Hyperfocus", "Stake Out", "Fogwise", "Eyes of Belmont"],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "The Healer Build",
+        "perks": ["Botany Knowledge", "Do No Harm", "Empathic Connection", "We'll Make It"],
+        "group": "SWF"
+    },
+    {
+        "name": "Looper Build",
+        "perks": ["Deadhard", "Lithe", "Resurgence", "Windows of Opportunity"],
+        "group": "SWF"
     }
 ]
