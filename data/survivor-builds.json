@@ -36,7 +36,7 @@
     },
     {
         "name": "Looper Build",
-        "perks": ["Deadhard", "Lithe", "Resurgence", "Windows of Opportunity"],
+        "perks": ["Dead Hard", "Lithe", "Resurgence", "Windows of Opportunity"],
         "group": "SWF"
     }
 ]
