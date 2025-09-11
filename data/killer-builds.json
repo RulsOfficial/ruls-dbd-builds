@@ -31,7 +31,7 @@
     },
     {
         "name": "Gen Kick Build",
-        "perks": ["Pop Goes the Weasel", "Barbecue & Chilli", "Hex: Blood Favor", "Call of Brine"],
+        "perks": ["Pop Goes the Weasel", "Barbecue & Chilli", "Hex: Blood Favour", "Call of Brine"],
         "killer": "Onryō"
     }
 ]
