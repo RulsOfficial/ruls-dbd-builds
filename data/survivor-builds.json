@@ -10,13 +10,13 @@
         "group": "SWF"
     },
     {
-        "name": "Gen Build",
+        "name": "Gen & Troll Build",
         "perks": ["Prove Thyself", "Déjà Vu", "Chemical Trap", "Resurgence"],
         "group": "SWF"
     },
     {
         "name": "Chase Build",
-        "perks": ["Alert", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+        "perks": ["Finesse", "Kindred", "Sprint Burst", "Windows of Opportunity"],
         "group": "Solo Queue"
     }
 ]
