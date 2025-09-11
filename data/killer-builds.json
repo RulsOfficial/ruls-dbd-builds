@@ -6,7 +6,7 @@
     },
     {
         "name": "Obssesion Build",
-        "perks": ["Friends 'Til The End", "Barbacue & Chili", "Furtive Chase", "Scourge Hook: Pain Resonance"],
+        "perks": ["Friends 'til the End", "Barbecue & Chilli", "Furtive Chase", "Scourge Hook: Pain Resonance"],
         "killer": "Plague"
     },
     {
@@ -16,7 +16,7 @@
     },
     {
         "name": "Generic Build",
-        "perks": ["Iron Maiden", "Barbacue & Chili", "Ultimate Weapon", "Scourge Hook: Pain Resonance"],
+        "perks": ["Iron Maiden", "Barbecue & Chilli", "Ultimate Weapon", "Scourge Hook: Pain Resonance"],
         "killer": "Huntress"
     },
     {
