@@ -23,5 +23,10 @@
         "name": "Exhaustion Build",
         "perks": ["Septic Touch", "Overwhelming Presence", "Thanatophobia", "Scourge Hook: Pain Resonance"],
         "killer": "Legion"
+    },
+    {
+        "name": "Heavy Info Build",
+        "perks": ["Nowhere to Hide", "Barbecue & Chilli", "I'm All Ears", "Lethal Pursuer"],
+        "killer": "Nurse"
     }
 ]
