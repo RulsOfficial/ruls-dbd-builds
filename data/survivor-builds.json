@@ -1,17 +1,17 @@
 [
     {
         "name": "Heavy Info Build",
-        "perks": ["Open-Handed", "Kindred", "Sprint Burst", "Still Sight"],
+        "perks": ["Kindred", "Open-Handed", "Sprint Burst", "Still Sight"],
         "group": "Solo Queue"
     },
     {
         "name": "Heavy Info Build",
-        "perks": ["Open-Handed", "Kindred", "Sprint Burst", "Resurgence"],
+        "perks": ["Kindred", "Open-Handed", "Resurgence", "Sprint Burst"],
         "group": "SWF"
     },
     {
         "name": "Gen & Troll Build",
-        "perks": ["Prove Thyself", "Déjà Vu", "Chemical Trap", "Resurgence"],
+        "perks": ["Chemical Trap", "Déjà Vu", "Prove Thyself", "Resurgence"],
         "group": "SWF"
     },
     {
