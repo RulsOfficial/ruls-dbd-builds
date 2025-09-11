@@ -21,7 +21,7 @@
     },
     {
         "name": "Exhaustion Build",
-        "perks": ["Septic Touch", "Overwhelming Presence", "Blood Echo", "Scourge Hook: Pain Resonance"],
+        "perks": ["Septic Touch", "Overwhelming Presence", "Thanatophobia", "Scourge Hook: Pain Resonance"],
         "killer": "Legion"
     }
 ]
