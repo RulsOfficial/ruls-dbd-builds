@@ -33,5 +33,10 @@
         "name": "Gen Kick Build",
         "perks": ["Pop Goes the Weasel", "Barbecue & Chilli", "Hex: Blood Favour", "Call of Brine"],
         "killer": "Onryō"
+    },
+    {
+        "name": "Terror Build",
+        "perks": ["Unnerving Presence", "Coulrophobia", "Infectious Fright", "Distressing"],
+        "killer": "Mastermind"
     }
 ]
