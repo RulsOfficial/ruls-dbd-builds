@@ -1,21 +1,21 @@
 # Rul's DBD Builds
 
-Sitio web dedicado a almacenar y mostrar mis builds de Dead by Daylight.
+Website dedicated to storing and showcasing my Dead by Daylight builds.
 
-Este proyecto se inspira fuertemente en el repositorio de [Mr.Tipson](https://github.com/MrTipson/otz-builds), del cual se han tomado estilos y estética, y cuyo trabajo fue clave en la generación de los archivos relacionados con los **perks** y **personajes**.
-
----
-
-## Personalización
-
-- Modificando los archivos `survivor-builds.json` y `killer-builds.json` puedes agregar tus propias builds.  
-- En `survivor-groups.json` puedes crear grupos para separar las builds de survivor por categorías.
+This project is heavily inspired by [Mr.Tipson](https://github.com/MrTipson/otz-builds)'s repository, from which styles and aesthetics were taken. His work was also key in generating the files related to **perks** and **characters**.
 
 ---
 
-## Actualización
+## Customization
 
-1. Abre un **codespace** del repositorio.  
-2. Ejecuta el siguiente comando:  
+- By modifying the `survivor-builds.json` and `killer-builds.json` files, you can add your own builds.  
+- In `survivor-groups.json` you can create groups to organize survivor builds by categories.
+
+---
+
+## Update
+
+1. Open a **codespace** of the repository.  
+2. Run the following command:  
    ```bash
    chmod +x update.sh ; ./update.sh
