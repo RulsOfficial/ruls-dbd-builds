@@ -2,7 +2,7 @@
 
 Website dedicated to storing and showcasing my Dead by Daylight builds.
 
-This project is heavily inspired by [Mr.Tipson](https://github.com/MrTipson/otz-builds)'s repository, from which styles and aesthetics were taken. His work was also key for scrapping the info about **perks** and **characters**.
+This project is heavily inspired by [Mr.Tipson's repository](https://github.com/MrTipson/otz-builds), from which styles and aesthetics were taken. His work was also key for scrapping the info about **perks** and **characters**.
 
 
 ## Customization
