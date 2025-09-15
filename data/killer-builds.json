@@ -45,7 +45,7 @@
         "killer": "Ghost Face"
     },
     {
-        "name": "Kick Build",
+        "name": "Gen Kick Build",
         "perks": ["Hex: Face the Darkness", "Nowhere to Hide", "Pop Goes the Weasel", "Trail of Torment"],
         "killer": "Blight"
     }
