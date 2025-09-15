@@ -43,5 +43,10 @@
         "name": "Hex Build",
         "perks": ["Hex: Devour Hope", "Hex: Undying", "Make Your Choice", "Surge"],
         "killer": "Ghost Face"
+    },
+    {
+        "name": "Kick Build",
+        "perks": ["Hex: Face the Darkness", "Nowhere to Hide", "Pop Goes the Weasel", "Trail of Torment"],
+        "killer": "Blight"
     }
 ]
