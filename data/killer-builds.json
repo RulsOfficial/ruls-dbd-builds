@@ -15,7 +15,7 @@
         "killer": "Executioner"
     },
     {
-        "name": "Generic Build",
+        "name": "Generic Locker Build",
         "perks": ["Barbecue & Chilli", "Iron Maiden", "Scourge Hook: Pain Resonance", "Ultimate Weapon"],
         "killer": "Huntress"
     },
@@ -50,7 +50,7 @@
         "killer": "Blight"
     },
     {
-        "name": "Gen Kick Build",
+        "name": "Generic Build",
         "perks": ["Barbecue & Chilli", "Bamboozle", "Nowhere to Hide", "Surge"],
         "killer": "Ghoul"
     }
