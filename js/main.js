@@ -124,8 +124,11 @@ document.addEventListener('DOMContentLoaded', async () => {
               <div class="build">
                 <div class="buildName">${build.name}</div>
                 <div class="perks">
-                  ${build.perks.map(perkName => {
+                  ${build.perks.map((perkName, i) => {
                     const perk = killerPerks.find(p => p.perkName === perkName);
+                    const altperks = build.altperks || [];
+                    const alt = altperks[i];
+                    const altObj = alt ? killerPerks.find(p => p.perkName === alt) : null;
                     return perk ? `
                       <div class="perkWrapper">
                         <img class="perk" title="${perk.perkName}" alt="${perk.perkName}"
@@ -134,6 +137,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                             data-character="${perk.character}" 
                             data-characterImage="${perk.characterImage || ''}" 
                             loading="lazy">
+                        ${altObj ? `
+                          <div class="alternatives" 
+                               title="${altObj.perkName}">
+                            <img class="perk"
+                              src="${altObj.perkImage}"
+                              alt="${altObj.perkName}"
+                              title="${altObj.perkName}"
+                              data-role="survivor"
+                              data-description="${altObj.description}"
+                              data-character="${altObj.character}"
+                              data-characterImage="${altObj.characterImage || ''}"
+                              loading="lazy">
+                          </div>
+                        ` : ''}
                       </div>
                     ` : '';
                   }).join('')}
