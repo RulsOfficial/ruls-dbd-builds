@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruls Builds</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="body">
+    <!-- Header -->
+    <div class="header">
+      <h2 class="textStrong">Ruls Recommended Builds</h2>
+      <h4 class="textWeak">Last changed: <span id="changeDate">Sept 10, 2025</span></h4>
+    </div>
+
+    <!-- Tabs con inputs y labels inmediatamente después -->
+    <div class="tabs">
+      <input type="radio" name="role" id="selectKillers" value="killer" checked>
+      <label for="selectKillers">
+        <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/0/06/IconHelpLoading_killer.png" alt="Killers">
+        Killers
+      </label>
+
+      <input type="radio" name="role" id="selectSurvivors" value="survivor">
+      <label for="selectSurvivors">
+        <img src="https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/b/b3/IconHelpLoading_survivor.png" alt="Survivors">
+        Survivors
+      </label>
+
+      <!-- Killer Tab -->
+      <div class="killerTab">
+        <nav id="sidebar">
+          <div class="sidebarTab"></div>
+          <div class="sidebarContent" id="killerSidebar">
+            <!-- Links a cada killer se generan dinámicamente -->
+          </div>
+        </nav>
+        <div class="characters" id="killers">
+          <!-- Aquí se inyectan los killers y sus builds -->
+        </div>
+      </div>
+
+      <!-- Survivor Tab -->
+      <div class="survivorTab">
+        <div class="characters" id="survivors">
+          <!-- Aquí se inyectan los builds de supervivientes -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>Images and perk descriptions are obtained from the
+        <a href="https://deadbydaylight.wiki.gg/wiki/Dead_by_Daylight_Wiki">Dead by Daylight Wiki</a>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Script principal -->
+  <script src="js/main.js"></script>
+  <script>
+    // Sidebar toggle
+    const sidebarTab = document.querySelector('.sidebarTab');
+    const sidebar = document.getElementById('sidebar');
+    sidebarTab.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
