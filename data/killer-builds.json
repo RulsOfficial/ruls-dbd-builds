@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Gen Control Build",
+        "perks": ["Oppression", "Scourge Hook: Pain Resonance", "Surveillance", "Ultimate Weapon"],
+        "killer": "Trickster"
+    },
+    {
+        "name": "Generic Obssesion Build",
+        "perks": ["Barbecue & Chilli", "Friends 'til the End", "Furtive Chase", "Scourge Hook: Pain Resonance"],
+        "killer": "Plague"
+    },
+    {
+        "name": "Stealth Info Build",
+        "perks": ["I'm All Ears", "Nowhere to Hide", "Scourge Hook: Pain Resonance", "Trail of Torment"],
+        "killer": "Executioner"
+    },
+    {
+        "name": "Generic Locker Build",
+        "perks": ["Barbecue & Chilli", "Iron Maiden", "Scourge Hook: Pain Resonance", "Ultimate Weapon"],
+        "killer": "Huntress"
+    },
+    {
+        "name": "Exhaustion Build",
+        "perks": ["Overwhelming Presence", "Scourge Hook: Pain Resonance", "Septic Touch", "Thanatophobia"],
+        "killer": "Legion"
+    },
+    {
+        "name": "Heavy Info Build",
+        "perks": ["Barbecue & Chilli", "I'm All Ears", "Lethal Pursuer", "Nowhere to Hide"],
+        "killer": "Nurse"
+    },
+    {
+        "name": "Gen Regression Build",
+        "perks": ["Barbecue & Chilli", "Call of Brine", "Hex: Blood Favour", "Pop Goes the Weasel"],
+        "killer": "Onryō"
+    },
+    {
+        "name": "Terror Build",
+        "perks": ["Coulrophobia", "Distressing", "Infectious Fright", "Unnerving Presence"],
+        "killer": "Mastermind"
+    },
+    {
+        "name": "Hex Build",
+        "perks": ["Hex: Devour Hope", "Hex: Undying", "Make Your Choice", "Surge"],
+        "killer": "Ghost Face"
+    },
+    {
+        "name": "Gen Kick Build",
+        "perks": ["Hex: Face the Darkness", "Nowhere to Hide", "Pop Goes the Weasel", "Trail of Torment"],
+        "killer": "Blight"
+    },
+    {
+        "name": "Generic Build",
+        "perks": ["Barbecue & Chilli", "Bamboozle", "Nowhere to Hide", "Surge"],
+        "killer": "Ghoul"
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Heavy Info Build",
+        "perks": ["Kindred", "Open-Handed", "Sprint Burst", "Still Sight"],
+        "altperks": ["", "", "Lithe", "Bond"],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "Heavy Info Build",
+        "perks": ["Kindred", "Open-Handed", "Resurgence", "Sprint Burst"],
+        "altperks": ["", "", "", "Lithe"],
+        "group": "SWF"
+    },
+    {
+        "name": "Gen & Troll Build",
+        "perks": ["Chemical Trap", "Head On", "Prove Thyself", "Resurgence"],
+        "altperks": ["Flashbang", "", "Déjà Vu", ""],
+        "group": "SWF"
+    },
+    {
+        "name": "Chase Build",
+        "perks": ["Finesse", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+        "altperks": ["", "", "Lithe", ""],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "Schizo Build",
+        "perks": ["Deception", "Diversion", "Mirrored Illusion", "Red Herring"],
+        "altperks": ["", "", "", ""],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "Gen Awareness Build",
+        "perks": ["Hyperfocus", "Stake Out", "Fogwise", "Eyes of Belmont"],
+        "altperks": ["", "", "", ""],
+        "group": "Solo Queue"
+    },
+    {
+        "name": "The Healer Build",
+        "perks": ["Botany Knowledge", "Do No Harm", "Empathic Connection", "We'll Make It"],
+        "altperks": ["", "", "", ""],
+        "group": "SWF"
+    },
+    {
+        "name": "Looper Build",
+        "perks": ["Dead Hard", "Lithe", "Resurgence", "Windows of Opportunity"],
+        "altperks": ["", "Sprint Burst", "", ""],
+        "group": "SWF"
+    },
+    {
+        "name": "Joey Build",
+        "perks": ["Blast Mine", "Flashbang", "Head On", "Mirrored Illusion"],
+        "altperks": ["", "", "", ""],
+        "group": "Icons"
+    }
+]
