@@ -11,9 +11,10 @@ This project is heavily inspired by [Mr.Tipson's repository](https://github.com/
 - In **`survivor-groups.json`** you can create groups to organize survivor builds by categories.
 
 
-## Update
+## Updating Info
 
 1. Open a **codespace** of the repository.  
 2. Run the following command:  
    ```bash
    chmod +x update.sh ; ./update.sh
+
