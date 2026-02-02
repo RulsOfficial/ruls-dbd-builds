@@ -64,5 +64,18 @@
         "perks": ["Barbecue & Chilli", "Bamboozle", "Nowhere to Hide", "Surge"],
         "altperks": ["", "", "", "Scourge Hook: Pain Resonance"],
         "killer": "Ghoul"
+    },
+    {
+        "name": "Scream Build",
+        "perks": ["Hex: Face the Darkness", "Infectious Fright", "Phantom Fear", "THWACK!"],
+        "altperks": ["", "", "", ""],
+        "killer": "Doctor"
+    },
+    {
+        "name": "Undetectable Build",
+        "perks": ["Friends 'til the End","Grim Embrace","Scourge Hook: Pain Resonance","Secret Project"],
+        "altperks": ["", "", "", ""],
+        "killer": "Deathslinger"
     }
 ]
+
