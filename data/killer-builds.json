@@ -73,9 +73,10 @@
     },
     {
         "name": "Undetectable Build",
-        "perks": ["Friends 'til the End","Grim Embrace","Scourge Hook: Pain Resonance","Secret Project"],
+        "perks": ["Friends 'til the End","Grim Embrace","Hex: Fortune's Fool","Secret Project"],
         "altperks": ["", "", "", ""],
         "killer": "Deathslinger"
     }
 ]
+
 
