@@ -1,7 +1,8 @@
 #!/bin/sh
-set -e
 npm install axios jsdom
-(cd js && node update-perks.js)
+cd js 
+node update-perks.js
+cd ..
 rm -rf node_modules package.json package-lock.json
 git add .
 git commit -m "Autoupdate"
