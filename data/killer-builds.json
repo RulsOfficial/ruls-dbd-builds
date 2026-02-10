@@ -76,8 +76,21 @@
         "perks": ["Friends 'til the End","Grim Embrace","Hex: Fortune's Fool","Secret Project"],
         "altperks": ["Hex: Retribution", "Thrilling Tremors", "", ""],
         "killer": "Deathslinger"
-    }
+    },
+    {
+        "name": "Generic Locker Build",
+        "perks": ["Bamboozle", "Iron Maiden", "Nowhere to Hide", "Ultimate Weapon"],
+        "altperks": ["Scourge Hook: Pain Resonance", "", "", ""],
+        "killer": "Trickster"
+    },
+    {
+        "name": "Backpack Build",
+        "perks": ["Agitation", "Iron Grasp", "Mad Grit", "Starstruck"],
+        "altperks": ["", "", "", "Awakened Awareness"],
+        "killer": "Mastermind"
+    }  
 ]
+
 
 
 
