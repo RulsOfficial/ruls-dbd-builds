@@ -20,7 +20,7 @@
     {
         "name": "Generic Locker Build",
         "perks": ["Barbecue & Chilli", "Iron Maiden", "Scourge Hook: Pain Resonance", "Ultimate Weapon"],
-        "altperks": ["", "", "", ""],
+        "altperks": ["Nowhere to Hide", "Bamboozle", "", ""],
         "killer": "Huntress"
     },
     {
@@ -90,6 +90,7 @@
         "killer": "Mastermind"
     }  
 ]
+
 
 
 
