@@ -37,8 +37,8 @@
     },
     {
         "name": "The Healer Build",
-        "perks": ["Botany Knowledge", "Do No Harm", "Empathic Connection", "We'll Make It"],
-        "altperks": ["", "", "", ""],
+        "perks": ["Botany Knowledge", "Desperate Measures", "Empathic Connection", "We'll Make It"],
+        "altperks": ["", "Do No Harm", "", ""],
         "group": "SWF"
     },
     {
@@ -66,6 +66,7 @@
         "group": "SWF"
     }
 ]
+
 
 
 
