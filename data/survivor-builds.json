@@ -37,8 +37,8 @@
     },
     {
         "name": "The Healer Build",
-        "perks": ["Botany Knowledge", "Desperate Measures", "Empathic Connection", "We'll Make It"],
-        "altperks": ["", "Do No Harm", "", ""],
+        "perks": ["Botany Knowledge", "Do No Harm", "Empathic Connection", "We'll Make It"],
+        "altperks": ["", "", "", ""],
         "group": "SWF"
     },
     {
@@ -58,10 +58,14 @@
         "perks": ["Conviction", "Plot Twist", "Soul Guard", "Tenacity"],
         "altperks": ["", "", "", ""],
         "group": "SWF"
+    },
+    {
+        "name": "Terrorist Build",
+        "perks": ["No Mither", "Invocation: Weaving Spiders", "Resilience", "Deja Vu"],
+        "altperks": ["", "", "", ""],
+        "group": "SWF"
     }
 ]
-
-
 
 
 
