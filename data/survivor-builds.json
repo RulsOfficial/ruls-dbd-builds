@@ -55,19 +55,14 @@
     },
     {
         "name": "Anti-Slug Build",
-        "perks": ["Conviction", "Plot Twist", "Soul Guard", "Tenacity"],
-        "altperks": ["", "", "", ""],
+        "perks": ["Conviction", "Plot Twist", "Soul Guard", "Unbreakable"],
+        "altperks": ["", "", "", "Tenacity"],
         "group": "Meme"
     },
     {
         "name": "Terrorist Build",
-        "perks": ["No Mither", "Invocation: Weaving Spiders", "Resilience", "Deja Vu"],
+        "perks": ["No Mither", "Invocation: Weaving Spiders", "Resilience", "Déjà Vu"],
         "altperks": ["", "", "", ""],
         "group": "Meme"
     }
 ]
-
-
-
-
-
