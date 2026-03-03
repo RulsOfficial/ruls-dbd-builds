@@ -27,7 +27,7 @@
         "name": "Schizo Build",
         "perks": ["Deception", "Diversion", "Mirrored Illusion", "Red Herring"],
         "altperks": ["", "", "", ""],
-        "group": "Solo Queue"
+        "group": "Meme"
     },
     {
         "name": "Gen Awareness Build",
@@ -66,3 +66,4 @@
         "group": "Meme"
     }
 ]
+
