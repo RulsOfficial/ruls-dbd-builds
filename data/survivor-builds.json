@@ -57,9 +57,10 @@
         "name": "Anti-Slug Build",
         "perks": ["Conviction", "Plot Twist", "Soul Guard", "Tenacity"],
         "altperks": ["", "", "", ""],
-        "groups": "SWF",
+        "groups": "SWF"
     }
 ]
+
 
 
 
