@@ -57,15 +57,16 @@
         "name": "Anti-Slug Build",
         "perks": ["Conviction", "Plot Twist", "Soul Guard", "Tenacity"],
         "altperks": ["", "", "", ""],
-        "group": "SWF"
+        "group": "Meme"
     },
     {
         "name": "Terrorist Build",
         "perks": ["No Mither", "Invocation: Weaving Spiders", "Resilience", "Deja Vu"],
         "altperks": ["", "", "", ""],
-        "group": "SWF"
+        "group": "Meme"
     }
 ]
+
 
 
 
