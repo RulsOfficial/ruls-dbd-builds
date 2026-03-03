@@ -52,5 +52,12 @@
         "perks": ["Blast Mine", "Flashbang", "Head On", "Mirrored Illusion"],
         "altperks": ["", "", "", ""],
         "group": "Icons"
+    },
+    {
+        "name": "Anti-Slug Build",
+        "perks": ["Conviction","Plot Twist","Soul Guard","Tenacity"],
+        "altperks": ["","","",""],
+        "groups": "SWF",
     }
 ]
+
