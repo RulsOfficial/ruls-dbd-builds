@@ -48,9 +48,9 @@
         "killer": "Mastermind"
     },
     {
-        "name": "Hex Build",
+        "name": "Hex-Gen Build",
         "perks": ["Grim Embrace", "Hex: Devour Hope", "Hex: Undying", "Surge"],
-        "altperks": ["", "", "", "Hex: Face The Darkness"],
+        "altperks": ["", "", "", "Hex: Face the Darkness"],
         "killer": "Ghost Face"
     },
     {
@@ -90,6 +90,7 @@
         "killer": "Mastermind"
     }  
 ]
+
 
 
 
