@@ -1,5 +1,5 @@
-name: Propose Build (Simple)
-description: Submit a basic DBD build
+name: Propose Build
+description: Submit your own build to the proyect.
 title: "Build: "
 labels: ["build"]
 
