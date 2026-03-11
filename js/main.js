@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const GITHUB_USER = 'RulsOfficial';
-    const GITHUB_REPO = 'ruls-dbd-builds';
     const GITHUB_BRANCH = 'dev';
 
     async function loadBuildsFromFolder(folderPath) {
-      const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folderPath}?ref=${GITHUB_BRANCH}`;
+      const apiUrl = `https://api.github.com/repos/RulsOfficial/ruls-dbd-builds/contents/data/${folderPath}?ref=${GITHUB_BRANCH}`;
       const files = await fetch(apiUrl).then(r => r.json());
       const jsonFiles = files.filter(f => f.name.endsWith('.json'));
       const builds = await Promise.all(
@@ -199,3 +197,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error cargando datos:', e);
   }
 });
+
