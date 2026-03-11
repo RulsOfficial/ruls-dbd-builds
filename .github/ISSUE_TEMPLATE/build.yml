@@ -52,5 +52,5 @@ body:
     attributes:
       label: Author
       placeholder: Pizza
-    validations:
-      required: true
+      validations:
+        required: true
