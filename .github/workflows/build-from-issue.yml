@@ -22,6 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install -g gh jq
+
           ISSUE_BODY=$(jq -r '.issue.body' $GITHUB_EVENT_PATH)
           TYPE=$(echo "$ISSUE_BODY" | grep '^type:' | cut -d':' -f2 | xargs)
           AUTHOR=$(echo "$ISSUE_BODY" | grep '^author:' | cut -d':' -f2- | xargs)
@@ -30,31 +31,41 @@ jobs:
           PERK2=$(echo "$ISSUE_BODY" | grep '^perk2:' | cut -d':' -f2- | xargs)
           PERK3=$(echo "$ISSUE_BODY" | grep '^perk3:' | cut -d':' -f2- | xargs)
           PERK4=$(echo "$ISSUE_BODY" | grep '^perk4:' | cut -d':' -f2- | xargs)
+
           PERKS_ARRAY=($PERK1 $PERK2 $PERK3 $PERK4)
           SORTED_PERKS=$(printf '%s\n' "${PERKS_ARRAY[@]}" | sort | paste -sd',' -)
+
           if [[ "$NAME" != *build* ]]; then
             NAME="$NAME Build"
           fi
+
           FILE_NAME=$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -d "'")
+
           if [[ "$TYPE" == "Survivor" ]]; then
             FOLDER="data/survivor-builds"
+            GROUP_FIELD='"group": "General",'
           else
             FOLDER="data/killer-builds"
             KILLER=$(echo "$ISSUE_BODY" | grep '^killer:' | cut -d':' -f2- | xargs)
             KILLER_NAME=$(echo "$KILLER" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
             FILE_NAME="${FILE_NAME}-${KILLER_NAME}"
+            GROUP_FIELD="\"killer\": \"$KILLER\","
           fi
+
           mkdir -p $FOLDER
+
           echo "{
   \"name\": \"$NAME\",
-  \"perks\": [$(echo $SORTED_PERKS | sed 's/,/","/g' | sed 's/^/"/' | sed 's/$/"/')],
+  \"perks\": [$(echo $SORTED_PERKS | sed 's/,/\",\"/g' | sed 's/^/\"/' | sed 's/$/\"/')],
   \"altperks\": [\"\",\"\",\"\",\"\"],
-  $(if [[ "$TYPE" == "Survivor" ]]; then echo "\"group\": \"General\","; else echo "\"killer\": \"$KILLER\","; fi)
+  $GROUP_FIELD
   \"author\": \"$AUTHOR\"
 }" > $FOLDER/$FILE_NAME.json
+
           BRANCH="add-build-$(date +%s)"
           git checkout -b $BRANCH
           git add $FOLDER/$FILE_NAME.json
           git commit -m "Add build: $NAME"
           git push origin $BRANCH
+
           gh pr create --title "Build $GITHUB_ACTOR $(date +%s)" --body "Automatically generated from Issue #${{ github.event.issue.number }}" --base main
