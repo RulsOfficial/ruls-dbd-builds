@@ -9,64 +9,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check if Issue has build label
+      - name: Check build label
         run: |
           LABELS=$(jq -r '.issue.labels[].name' $GITHUB_EVENT_PATH)
-          echo "Labels: $LABELS"
           if ! echo "$LABELS" | grep -q '^build$'; then
-            echo "Issue does not have the build label, skipping workflow."
+            echo "No build label, skipping."
             exit 0
           fi
 
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-
-      - name: Generate JSON and PR
+      - name: Generate simple JSON and PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install -g gh jq
-
           ISSUE_BODY=$(jq -r '.issue.body' $GITHUB_EVENT_PATH)
-          TYPE=$(echo "$ISSUE_BODY" | grep '^type:' | cut -d':' -f2 | xargs)
-          AUTHOR=$(echo "$ISSUE_BODY" | grep '^author:' | cut -d':' -f2- | xargs)
           NAME=$(echo "$ISSUE_BODY" | grep '^build_name:' | cut -d':' -f2- | xargs)
-          PERK1=$(echo "$ISSUE_BODY" | grep '^perk1:' | cut -d':' -f2- | xargs)
-          PERK2=$(echo "$ISSUE_BODY" | grep '^perk2:' | cut -d':' -f2- | xargs)
-          PERK3=$(echo "$ISSUE_BODY" | grep '^perk3:' | cut -d':' -f2- | xargs)
-          PERK4=$(echo "$ISSUE_BODY" | grep '^perk4:' | cut -d':' -f2- | xargs)
-
-          PERKS_ARRAY=($PERK1 $PERK2 $PERK3 $PERK4)
-          SORTED_PERKS=$(printf '%s\n' "${PERKS_ARRAY[@]}" | sort | paste -sd',' -)
-
-          if [[ "$NAME" != *build* ]]; then
-            NAME="$NAME Build"
-          fi
+          AUTHOR=$(echo "$ISSUE_BODY" | grep '^author:' | cut -d':' -f2- | xargs)
 
           FILE_NAME=$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -d "'")
-
-          if [[ "$TYPE" == "Survivor" ]]; then
-            FOLDER="data/survivor-builds"
-            GROUP_FIELD='"group": "General",'
-          else
-            FOLDER="data/killer-builds"
-            KILLER=$(echo "$ISSUE_BODY" | grep '^killer:' | cut -d':' -f2- | xargs)
-            KILLER_NAME=$(echo "$KILLER" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-            FILE_NAME="${FILE_NAME}-${KILLER_NAME}"
-            GROUP_FIELD="\"killer\": \"$KILLER\","
-          fi
-
+          FOLDER="data/test-builds"
           mkdir -p $FOLDER
 
           echo "{
   \"name\": \"$NAME\",
-  \"perks\": [$(echo $SORTED_PERKS | sed 's/,/\",\"/g' | sed 's/^/\"/' | sed 's/$/\"/')],
-  \"altperks\": [\"\",\"\",\"\",\"\"],
-  $GROUP_FIELD
   \"author\": \"$AUTHOR\"
 }" > $FOLDER/$FILE_NAME.json
 
