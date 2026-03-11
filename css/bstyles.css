@@ -3,14 +3,17 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --accent: #0487d2;
+  --accent-rgb: 4,135,210;
+}
+body.killer {
+  --accent: #f88300;
+  --accent-rgb: 248,131,0;
+}
 body {
-  background:
-    linear-gradient(
-      135deg,
-      #0a0a0a,
-      #1a1a2e
-    );
-  color: #e4e4e7;
+  background: rgb(49,49,49);
+  color: rgb(220,220,220);
   font-family: Inter,system-ui,sans-serif;
   min-height: 100vh;
   padding: 40px 20px;
@@ -23,8 +26,8 @@ h1 {
   background:
     linear-gradient(
       90deg,
-      #f472b6,
-      #a78bfa
+      var(--accent),
+      var(--accent)
     );
   -webkit-background-clip: text;
   background-clip: text;
@@ -34,14 +37,14 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 .subtitle {
-  color: #71717a;
+  color: rgb(156,156,156);
   font-size: .875rem;
   margin-bottom: 32px;
 }
 .form-section {
   backdrop-filter: blur(10px);
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
+  background: rgba(0,0,0,.4);
+  border: 1px solid rgba(255,255,255,.1);
   border-radius: 16px;
   margin-bottom: 20px;
   padding: 24px;
@@ -51,7 +54,7 @@ h1 {
   z-index: 2;
 }
 .form-section h2 {
-  color: #a1a1aa;
+  color: rgb(156,156,156);
   font-size: .8rem;
   font-weight: 600;
   letter-spacing: .1em;
@@ -72,7 +75,7 @@ h1 {
   grid-column: 1/-1;
 }
 label {
-  color: #a1a1aa;
+  color: rgb(156,156,156);
   font-size: .75rem;
   font-weight: 500;
   letter-spacing: .05em;
@@ -94,8 +97,8 @@ input:hover,select:hover {
   border-color: rgba(255,255,255,.2);
 }
 input:focus,select:focus {
-  border-color: #a78bfa;
-  box-shadow: 0 0 0 3px rgba(167,139,250,.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.15);
 }
 input::placeholder {
   color: #52525b;
@@ -110,7 +113,7 @@ select {
   padding-right: 40px;
 }
 select option {
-  background: #1a1a2e;
+  background: rgb(36,36,36);
   color: #fff;
 }
 .perk-grid {
@@ -129,8 +132,8 @@ select option {
   border-color: rgba(255,255,255,.15);
 }
 .perk-slot.selected {
-  background: rgba(167,139,250,.05);
-  border-color: rgba(167,139,250,.4);
+  background: rgba(var(--accent-rgb),.08);
+  border-color: rgba(var(--accent-rgb),.4);
 }
 .perk-header {
   display: flex;
@@ -147,15 +150,10 @@ select option {
   width: 48px;
 }
 .perk-image:not([src]),.perk-image[src=""] {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(167,139,250,.1),
-      rgba(244,114,182,.1)
-    );
+  background: rgba(var(--accent-rgb),.1);
 }
 .perk-desc {
-  color: #71717a;
+  color: rgb(156,156,156);
   font-size: .7rem;
   line-height: 1.5;
   margin-top: 10px;
@@ -171,7 +169,7 @@ select option {
 }
 .autocomplete-list {
   display: none;
-  background: #1e1e2e;
+  background: rgb(36,36,36);
   border: 1px solid rgba(255,255,255,.1);
   border-radius: 10px;
   box-shadow: 0 10px 40px rgba(0,0,0,.5);
@@ -218,7 +216,7 @@ select option {
   border-bottom: 0;
 }
 .autocomplete-item:hover,.autocomplete-item.selected {
-  background: rgba(167,139,250,.15);
+  background: rgba(var(--accent-rgb),.2);
 }
 .btn-group {
   display: flex;
@@ -237,22 +235,17 @@ button {
   transition: all .2s;
 }
 .btn-primary {
-  background:
-    linear-gradient(
-      135deg,
-      #a78bfa,
-      #f472b6
-    );
+  background: var(--accent);
   color: #fff;
 }
 .btn-primary:hover {
-  box-shadow: 0 8px 25px rgba(167,139,250,.35);
+  box-shadow: 0 8px 25px rgba(var(--accent-rgb),.35);
   transform: translateY(-2px);
 }
 .btn-secondary {
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.1);
-  color: #e4e4e7;
+  color: rgb(220,220,220);
 }
 .btn-secondary:hover {
   background: rgba(255,255,255,.1);
@@ -264,7 +257,7 @@ pre {
   background: rgba(0,0,0,.4);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 12px;
-  color: #a78bfa;
+  color: var(--accent);
   font-family: 'Fira Code',Consolas,monospace;
   font-size: .8rem;
   line-height: 1.6;
@@ -275,8 +268,8 @@ pre:empty {
   display: none;
 }
 .toast {
-  background: #1e1e2e;
-  border: 1px solid rgba(167,139,250,.3);
+  background: rgb(36,36,36);
+  border: 1px solid rgba(var(--accent-rgb),.3);
   border-radius: 10px;
   bottom: 30px;
   box-shadow: 0 10px 40px rgba(0,0,0,.4);
