@@ -1,0 +1,7 @@
+{
+    "name": "Gen Kick Build",
+    "perks": ["Hex: Face the Darkness", "Nowhere to Hide", "Pop Goes the Weasel", "Trail of Torment"],
+    "altperks": ["", "", "", ""],
+    "killer": "Blight",
+    "author": "Rul"
+}

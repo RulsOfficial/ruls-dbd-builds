@@ -1,0 +1,7 @@
+{
+    "name": "Backpack Build",
+    "perks": ["Agitation", "Iron Grasp", "Mad Grit", "Starstruck"],
+    "altperks": ["", "", "", "Awakened Awareness"],
+    "killer": "Mastermind",
+    "author": "Rul"
+}

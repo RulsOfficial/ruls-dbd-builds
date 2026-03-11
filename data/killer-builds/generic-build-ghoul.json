@@ -1,0 +1,7 @@
+{
+    "name": "Generic Build",
+    "perks": ["Barbecue & Chilli", "Bamboozle", "Nowhere to Hide", "Surge"],
+    "altperks": ["", "", "", "Scourge Hook: Pain Resonance"],
+    "killer": "Ghoul",
+    "author": "Rul"
+}

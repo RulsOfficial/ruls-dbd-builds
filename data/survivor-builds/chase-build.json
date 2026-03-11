@@ -1,0 +1,7 @@
+{
+    "name": "Chase Build",
+    "perks": ["Finesse", "Kindred", "Sprint Burst", "Windows of Opportunity"],
+    "altperks": ["", "", "Lithe", ""],
+    "group": "Solo Queue",
+    "author": "Rul"
+}

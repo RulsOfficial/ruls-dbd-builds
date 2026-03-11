@@ -1,0 +1,7 @@
+{
+    "name": "Scream Build",
+    "perks": ["Hex: Face the Darkness", "Infectious Fright", "Phantom Fear", "THWACK!"],
+    "altperks": ["", "", "", ""],
+    "killer": "Doctor",
+    "author": "Rul"
+}

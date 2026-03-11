@@ -1,0 +1,7 @@
+{
+    "name": "Heavy Info Build",
+    "perks": ["Kindred", "Open-Handed", "Sprint Burst", "Still Sight"],
+    "altperks": ["", "", "Lithe", "Bond"],
+    "group": "Solo Queue",
+    "author": "Rul"
+}

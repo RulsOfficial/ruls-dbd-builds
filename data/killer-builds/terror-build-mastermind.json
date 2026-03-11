@@ -1,0 +1,7 @@
+{
+    "name": "Terror Build",
+    "perks": ["Coulrophobia", "Distressing", "Infectious Fright", "Unnerving Presence"],
+    "altperks": ["", "", "", ""],
+    "killer": "Mastermind",
+    "author": "Rul"
+}

@@ -1,0 +1,7 @@
+{
+    "name": "Generic Locker Build",
+    "perks": ["Bamboozle", "Iron Maiden", "Nowhere to Hide", "Ultimate Weapon"],
+    "altperks": ["Scourge Hook: Pain Resonance", "", "", ""],
+    "killer": "Trickster",
+    "author": "Rul"
+}

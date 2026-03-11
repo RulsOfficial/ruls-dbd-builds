@@ -1,0 +1,7 @@
+{
+    "name": "Hex-Gen Build",
+    "perks": ["Grim Embrace", "Hex: Devour Hope", "Hex: Undying", "Surge"],
+    "altperks": ["", "", "", "Hex: Face the Darkness"],
+    "killer": "Ghost Face",
+    "author": "Rul"
+}
