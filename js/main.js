@@ -1,28 +1,37 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // 🔹 Cargar datos
-    const survivorBuilds = await fetch('./data/survivor-builds.json?v=' + Date.now()).then(r => r.json());
-    const killerBuilds = await fetch('./data/killer-builds.json?v=' + Date.now()).then(r => r.json());
+    const GITHUB_USER = 'RulsOfficial';
+    const GITHUB_REPO = 'ruls-dbd-builds';
+    const GITHUB_BRANCH = 'dev';
+
+    async function loadBuildsFromFolder(folderPath) {
+      const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folderPath}?ref=${GITHUB_BRANCH}`;
+      const files = await fetch(apiUrl).then(r => r.json());
+      const jsonFiles = files.filter(f => f.name.endsWith('.json'));
+      const builds = await Promise.all(
+        jsonFiles.map(f => fetch(f.download_url).then(r => r.json()))
+      );
+      return builds;
+    }
+
+    const survivorBuilds = await loadBuildsFromFolder('data/survivor-builds');
+    const killerBuilds = await loadBuildsFromFolder('data/killer-builds');
 
     const survivorPerks = await fetch('./data/survivor-perks.json?v=' + Date.now()).then(r => r.json());
     const killerPerks = await fetch('./data/killer-perks.json?v=' + Date.now()).then(r => r.json());
 
-    // 🔹 Containers
     const survivorsContainer = document.getElementById('survivors');
     const killersContainer = document.getElementById('killers');
     const killerSidebar = document.getElementById('killerSidebar');
 
-    // 🔹 Diccionario de portraits de survivors
     const survivorPortraits = await fetch('./data/survivor-groups.json?v=' + Date.now()).then(r => r.json())
 
-          // 🔹 Agrupar survivors por group
     const survivorsGrouped = {};
     survivorBuilds.forEach(build => {
       if (!survivorsGrouped[build.group]) survivorsGrouped[build.group] = [];
       survivorsGrouped[build.group].push(build);
     });
 
-    // 🔹 Render survivors (agrupados)
     survivorsContainer.innerHTML = Object.entries(survivorsGrouped).map(([groupName, builds]) => {
     const survivorImage = survivorPortraits[groupName] || "https://deadbydaylight.wiki.gg/images/placeholder.png";
 
@@ -81,35 +90,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
   }).join('');
     
-    // 🔹 Generar diccionario de retratos desde killer-perks.json
     const killerPortraits = {};
     killerPerks.forEach(perk => {
       if (perk.character && perk.characterImage) {
-        // Evita sobrescribir si ya lo guardamos (1 asesino puede tener varios perks)
         if (!killerPortraits[perk.character]) {
-          // Si la ruta es relativa (/images/...), la completas con el dominio
           const imageUrl = perk.characterImage.startsWith('http')
             ? perk.characterImage
             : `https://deadbydaylight.wiki.gg${perk.characterImage}`;
-          
           killerPortraits[perk.character] = imageUrl;
         }
       }
     });
 
-    // 🔹 Agrupar killers por personaje
     const killersGrouped = {};
     killerBuilds.forEach(build => {
       if (!killersGrouped[build.killer]) killersGrouped[build.killer] = [];
       killersGrouped[build.killer].push(build);
     });
 
-    // 🔹 Sidebar links (killers)
     killerSidebar.innerHTML = Object.keys(killersGrouped)
       .map(killerName => `<a href="#${killerName}">${killerName}</a>`)
       .join('');
 
-    // 🔹 Render killers agrupados
     killersContainer.innerHTML = Object.entries(killersGrouped).map(([killerName, builds]) => {
       const killerImage = killerPortraits[killerName] || "https://deadbydaylight.wiki.gg/images/placeholder.png";
 
@@ -162,7 +164,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
     }).join('');
 
-   // 🔹 Modal para perks
     document.querySelectorAll('.perk').forEach(img => {
       img.addEventListener('click', () => {
         const modalBg = document.createElement('div');
