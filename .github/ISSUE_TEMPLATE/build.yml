@@ -1,0 +1,56 @@
+name: Propose Build
+description: Submit a new Dead by Daylight build
+title: "Build: "
+labels: ["build"]
+
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Build name
+      placeholder: Anti-Slug Build
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Build type
+      options:
+        - Survivor
+        - Killer
+    validations:
+      required: true
+
+  - type: input
+    id: killer
+    attributes:
+      label: Killer (only for killer builds)
+      placeholder: Trickster
+
+  - type: textarea
+    id: perks
+    attributes:
+      label: Perks (comma separated)
+      placeholder: Unbreakable, Soul Guard, Plot Twist, Conviction
+    validations:
+      required: true
+
+  - type: textarea
+    id: altperks
+    attributes:
+      label: Alternative perks (comma separated)
+      placeholder: , , , Tenacity
+
+  - type: input
+    id: group
+    attributes:
+      label: Group (for survivor builds) or leave blank for killers
+
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      placeholder: Pizza
+    validations:
+      required: true
