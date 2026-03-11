@@ -1,4 +1,4 @@
-name: Create Simple Build from Issue
+name: Create Build from Issue
 
 on:
   issues:
@@ -20,34 +20,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Instalar gh y jq
           npm install -g gh jq
-
-          # Leer campos del Issue
           ISSUE_BODY=$(jq -r '.issue.body' $GITHUB_EVENT_PATH)
           TYPE=$(echo "$ISSUE_BODY" | grep '^type:' | cut -d':' -f2 | xargs)
           AUTHOR=$(echo "$ISSUE_BODY" | grep '^author:' | cut -d':' -f2- | xargs)
           NAME="New Build"   # Puedes poner el nombre genérico o extraerlo de otra línea si quieres
-
-          # Leer perks
           PERK1=$(echo "$ISSUE_BODY" | grep '^perk1:' | cut -d':' -f2- | xargs)
           PERK2=$(echo "$ISSUE_BODY" | grep '^perk2:' | cut -d':' -f2- | xargs)
           PERK3=$(echo "$ISSUE_BODY" | grep '^perk3:' | cut -d':' -f2- | xargs)
           PERK4=$(echo "$ISSUE_BODY" | grep '^perk4:' | cut -d':' -f2- | xargs)
-
-          # Crear array de perks y ordenar
           PERKS_ARRAY=($PERK1 $PERK2 $PERK3 $PERK4)
           SORTED_PERKS=$(printf '%s\n' "${PERKS_ARRAY[@]}" | sort | paste -sd',' -)
-
-          # Añadir "Build" al nombre si no lo tiene
           if [[ "$NAME" != *build* ]]; then
             NAME="$NAME Build"
           fi
-
-          # Formatear nombre de archivo
           FILE_NAME=$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -d "'")
-
-          # Elegir carpeta
           if [[ "$TYPE" == "Survivor" ]]; then
             FOLDER="data/survivor-builds"
           else
@@ -57,10 +44,7 @@ jobs:
             KILLER_NAME=$(echo "$KILLER" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
             FILE_NAME="${FILE_NAME}-${KILLER_NAME}"
           fi
-
           mkdir -p $FOLDER
-
-          # Generar JSON
           echo "{
   \"name\": \"$NAME\",
   \"perks\": [$(echo $SORTED_PERKS | sed 's/,/","/g' | sed 's/^/"/' | sed 's/$/"/')],
@@ -68,13 +52,9 @@ jobs:
   $(if [[ "$TYPE" == "Survivor" ]]; then echo "\"group\": \"General\","; else echo "\"killer\": \"$KILLER\","; fi)
   \"author\": \"$AUTHOR\"
 }" > $FOLDER/$FILE_NAME.json
-
-          # Crear branch y PR
           BRANCH="add-build-$(date +%s)"
           git checkout -b $BRANCH
           git add $FOLDER/$FILE_NAME.json
           git commit -m "Add build: $NAME"
           git push origin $BRANCH
-
-          # Crear PR usando gh CLI
           gh pr create --title "Add build: $NAME" --body "Automatically generated from Issue #${{ github.event.issue.number }}" --base main
