@@ -1,17 +1,9 @@
-name: Propose Build
-description: Submit a new Dead by Daylight build
+name: Propose Build (Simple)
+description: Submit a basic DBD build
 title: "Build: "
 labels: ["build"]
 
 body:
-  - type: input
-    id: name
-    attributes:
-      label: Build name
-      placeholder: Anti-Slug Build
-    validations:
-      required: true
-
   - type: dropdown
     id: type
     attributes:
@@ -23,34 +15,41 @@ body:
       required: true
 
   - type: input
-    id: killer
+    id: perk1
     attributes:
-      label: Killer (only for killer builds)
-      placeholder: Trickster
-
-  - type: textarea
-    id: perks
-    attributes:
-      label: Perks (comma separated)
-      placeholder: Unbreakable, Soul Guard, Plot Twist, Conviction
+      label: Perk 1
+      placeholder: First perk
     validations:
       required: true
 
-  - type: textarea
-    id: altperks
+  - type: input
+    id: perk2
     attributes:
-      label: Alternative perks (comma separated)
-      placeholder: , , , Tenacity
+      label: Perk 2
+      placeholder: Second perk
+    validations:
+      required: true
 
   - type: input
-    id: group
+    id: perk3
     attributes:
-      label: Group (for survivor builds) or leave blank for killers
+      label: Perk 3
+      placeholder: Third perk
+    validations:
+      required: true
+
+  - type: input
+    id: perk4
+    attributes:
+      label: Perk 4
+      placeholder: Fourth perk
+    validations:
+      required: true
 
   - type: input
     id: author
     attributes:
       label: Author
-      placeholder: Pizza
-      validations:
-        required: true
+      placeholder: Your name
+    validations:
+      required: true
