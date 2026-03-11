@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DBD Build Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bstyles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔪 Build Builder</h1>
+      <p class="subtitle">Create and export Dead by Daylight builds</p>
+      <div class="form-section">
+        <h2>Build Info</h2>
+        <div class="form-grid">
+          <div class="form-group"><label>Build Name</label><input id="buildName" placeholder="My Epic Build"></div>
+          <div class="form-group"><label>Author</label><input id="author" placeholder="Your name"></div>
+          <div class="form-group">
+            <label>Type</label>
+            <select id="type">
+              <option value="survivor">🏃 Survivor</option>
+              <option value="killer">🔪 Killer</option>
+            </select>
+          </div>
+          <div class="form-group" id="killerBox" style="display:none">
+            <label>Killer</label>
+            <div class="autocomplete">
+              <input id="killerInput" placeholder="Search killer...">
+              <div id="killerList" class="autocomplete-list"></div>
+            </div>
+          </div>
+          <div class="form-group" id="groupBox">
+            <label>Group</label>
+            <select id="groupSelect">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-section">
+        <h2>Perks</h2>
+        <div id="perkContainer" class="perk-grid"></div>
+      </div>
+      <div class="btn-group"><button class="btn-primary" onclick="generate()">Generate JSON</button><button class="btn-secondary" onclick="copy()">📋 Copy</button><button class="btn-secondary" onclick="createIssue()">📝 Create Issue</button></div>
+      <div class="output-section">
+        <pre id="output"></pre>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/builder.js"></script>
+  </body>
+</html>
