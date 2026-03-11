@@ -2,43 +2,42 @@
 	box-sizing: border-box;
 }
 :root {
+	--bg-darken: rgba(0, 0, 0, .4);
 	--bg-primary: rgb(49, 49, 49);
 	--bg-secondary: rgb(36, 36, 36);
-	--bg-darken: rgba(0, 0, 0, 0.4);
-	--text-strong: white;
-	--text-normal: rgb(220, 220, 220);
-	--text-weak: rgb(156, 156, 156);
+	--color-anchoring: #ff6100;
 	--color-killer: #f88300f7;
 	--color-survivor: #0487d2;
-	--color-anchoring: #ff6100;
+	--text-normal: rgb(220, 220, 220);
+	--text-strong: #fff;
+	--text-weak: rgb(156, 156, 156);
 }
 html {
-    /*scroll-behavior: smooth;*/
-	scroll-padding-top: 20px;
 	height: 100%;
+	scroll-padding-top: 20px;
 }
 body {
-	margin: 0;
 	background-color: var(--bg-primary);
 	color: var(--text-normal);
 	font-family: monospace;
 	font-size: 13pt;
 	height: 100%;
+	margin: 0;
 }
 .blur > .body {
-	filter: blur(5px) brightness(0.5);
+	filter: blur(5px) brightness(.5);
 }
 .blur {
 	overflow: hidden;
 }
 .body {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	flex-direction: column;
 	height: 100%;
 }
 a, a:visited {
-	color: cyan;
+	color: #0ff;
 }
 h2 {
 	font-size: 2rem;
@@ -50,110 +49,93 @@ h3 {
 	font-size: 1.2em;
 }
 h2, h3, h4 {
-	width: 100%;
 	text-align: center;
+	width: 100%;
 }
-/*
-
-Sidebar
-
-*/
 #sidebar {
-	font-size: 16pt;
-	z-index: 1;
-	position: fixed;
-	left: -300px;
-	top: 0px;
-	height: 100%;
-	width: 300px;
-	padding: 5px;
 	background-color: var(--bg-primary);
-	transition: left .25s ease-in-out;
-	box-shadow: 2px 2px 12px black;
+	box-shadow: 2px 2px 12px #000;
 	box-sizing: border-box;
+	font-size: 16pt;
+	height: 100%;
+	left: -300px;
+	padding: 5px;
+	position: fixed;
+	top: 0;
+	transition: left .25s ease-in-out;
+	width: 300px;
+	z-index: 1;
 }
 #sidebar.open {
-	left: 0px;
+	left: 0;
 }
 .sidebarContent > a {
-	color: var(--text-normal);
 	display: block;
+	color: var(--text-normal);
 	text-decoration: none;
 }
 .sidebarTab {
-	position: absolute;
-	width: 50px;
-	height: 50px;
 	background-color: var(--bg-secondary);
 	border-radius: 0 20px 20px 0;
-	top: 20px;
+	box-shadow: 5px 3px 7px -2px #000;
+	height: 50px;
 	left: 100%;
-	box-shadow: 5px 3px 7px -2px black;
+	position: absolute;
+	top: 20px;
+	width: 50px;
 }
 .sidebarContent {
-	padding: 10px;
+	box-sizing: border-box;
 	height: 100%;
 	overflow-y: auto;
-	box-sizing: border-box;
 	overscroll-behavior: contain;
+	padding: 10px;
 }
 .sidebarContent > a:hover {
 	color: var(--color-anchoring);
 }
 .sidebarTab::after {
-	position: absolute;
-	top: 40%;
-	left: 40%;
 	content: "";
-	width: 10px;
-	height: 10px;
 	border-bottom: 2px solid var(--text-strong);
 	border-right: 2px solid var(--text-strong);
+	height: 10px;
+	left: 40%;
+	position: absolute;
+	top: 40%;
 	transform: rotate(-45deg);
-	transition: transform 0.25s linear;
+	transition: transform .25s linear;
+	width: 10px;
 }
 .open > .sidebarTab::after {
 	transform: rotate(135deg);
 }
-/*
-
-Footer
-
-*/
 .footer {
-	width: calc(100% - 20px);
-	padding: 20px;
 	background-color: var(--bg-darken);
-	text-align: center;
-	margin: 10px;
 	border-radius: 8px;
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	width: calc(100% - 20px);
 }
 .footer img {
-	max-width: 24px;
 	max-height: 24px;
+	max-width: 24px;
 }
 .footer > div {
 	margin: 10px;
 }
-/*
-
-Tabs
-
-*/
 .tabs {
-	width: 100%;
 	display: grid;
-	grid-template:
-		"labels labels"
-		"tab tab";
-	grid-template-rows: min-content auto;
 	align-items: center;
 	flex-grow: 1;
 	gap: 10px;
+	grid-template: "labels labels" "tab tab";
+	grid-template-rows: min-content auto;
+	width: 100%;
 }
 .killerTab, .survivorTab {
-	grid-area: tab;
 	display: block;
+	grid-area: tab;
 	width: 100%;
 }
 input[type="radio"] {
@@ -162,270 +144,241 @@ input[type="radio"] {
 label[for="selectKillers"] {
 	justify-self: end;
 }
-input#selectKillers:checked + label,
-input#selectSurvivors:checked + label {
+input#selectKillers:checked + label, input#selectSurvivors:checked + label {
 	--character: var(--color-killer);
+	border-radius: 8px;
 	outline: 2px solid var(--character);
 	outline-offset: 2px;
-	border-radius: 8px;
 }
-input#selectSurvivors:checked + label { --character: var(--color-survivor); }
-input#selectKillers:checked ~ .survivorTab { display: none; }
-input#selectKillers:checked ~ .killerTab{ --character: var(--color-killer); }
-input#selectSurvivors:checked ~ .killerTab { display: none; }
-input#selectSurvivors:checked ~ .survivorTab{ --character: var(--color-survivor); }
+input#selectSurvivors:checked + label {
+	--character: var(--color-survivor);
+}
+input#selectKillers:checked ~ .survivorTab {
+	display: none;
+}
+input#selectKillers:checked ~ .killerTab {
+	--character: var(--color-killer);
+}
+input#selectSurvivors:checked ~ .killerTab {
+	display: none;
+}
+input#selectSurvivors:checked ~ .survivorTab {
+	--character: var(--color-survivor);
+}
 .tabs > label {
-	font-size: 1.5rem;
 	display: flex;
 	align-items: center;
+	font-size: 1.5rem;
 	gap: 10px;
 	padding: 0 10px;
 	width: fit-content;
 }
 label > img {
-	width: 1.5rem;
 	height: 1.5rem;
+	width: 1.5rem;
 }
-/*
-
-Generic
-
-*/
-.textStrong { color: var(--text-strong); }
-.textNormal { color: var(--text-normal); }
-.textWeak { color: var(--text-weak); }
-/*
-
-Characters
-
-*/
+.textStrong {
+	color: var(--text-strong);
+}
+.textNormal {
+	color: var(--text-normal);
+}
+.textWeak {
+	color: var(--text-weak);
+}
 .characters {
-	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(860px, 1fr));
 	margin-bottom: 10px;
+	width: 100%;
 }
-/*
-
-Character
-
-*/
 .character {
-	position: relative;
-	z-index: 0; /* Create new stacking context */
-	box-sizing: border-box;
 	display: grid;
-	grid-template:
-		"img name"
-		"img build";
-	grid-template-rows: 40px auto;
-	grid-template-columns: min-content auto;
-	padding: 10px;
-	margin: 10px;
-	border-radius: 8px;
 	background-color: var(--bg-darken);
-	min-width: 800px;
-	column-gap: 1em;
+	border-radius: 8px;
 	box-shadow: 1px 1px 6px var(--character);
+	box-sizing: border-box;
+	column-gap: 1em;
+	grid-template: "img name" "img build";
+	grid-template-columns: min-content auto;
+	grid-template-rows: 40px auto;
+	margin: 10px;
+	min-width: 800px;
+	padding: 10px;
+	position: relative;
+	z-index: 0;
 }
 .character:target {
 	outline: 2px solid var(--color-anchoring);
 }
 .character > .image {
-	position: relative;
-	grid-area: img;
 	align-self: center;
+	grid-area: img;
+	height: fit-content;
 	max-height: 300px;
 	max-width: 225px;
+	position: relative;
 	width: fit-content;
-	height: fit-content;
 	z-index: -1;
 }
 .image > img {
 	display: block;
+	height: 100%;
 	margin: auto;
 	object-fit: contain;
-	height: 100%;
 	width: -webkit-fill-available;
 	width: -moz-available;
 }
 .killerTab .image > img {
-	transform: scale(1.3);
 	clip-path: inset(10px 25px);
+	transform: scale(1.3);
 }
 .character > .characterName {
-	grid-area: name;
-	color: var(--text-strong);
 	align-self: baseline;
+	color: var(--text-strong);
+	grid-area: name;
 }
-/*
-
-Builds
-
-*/
 .builds {
-	align-self: center;
-	padding: 10px;
-	min-width: 256px;
 	display: grid;
+	align-self: center;
 	grid-template-columns: repeat(2, 1fr);
 	justify-content: space-around;
+	min-width: 256px;
+	padding: 10px;
 }
 .build {
 	background-color: var(--bg-darken);
-	padding: 8px;
 	border-radius: 8px;
+	box-shadow: 0 1px 1px var(--text-strong);
 	margin: 8px;
-	box-shadow: 0px 1px 1px var(--text-strong);
-	z-index: 0; /* Create new stacking context */
+	padding: 8px;
+	z-index: 0;
 }
 .buildName {
-	text-align: center;
 	margin-bottom: 10px;
+	text-align: center;
 }
 .perks {
 	display: flex;
 	justify-content: center;
 }
 .perkWrapper {
-	position: relative;
 	display: inline-block;
+	position: relative;
 }
 .perkWrapper.hasAltPerks::after {
 	content: "";
-	width: 32px;
+	background-color: var(--bg-secondary);
+	background-image: var(--altImg);
+	background-position: center;
+	background-size: contain;
+	border-radius: 50%;
 	height: 32px;
 	position: absolute;
-	background-image: var(--altImg);
-	background-size: contain;
-	background-position: center;
-	background-color: var(--bg-secondary);
-	border-radius: 50%;
 	right: -5px;
 	top: -5px;
+	width: 32px;
 	z-index: -1;
 }
 .perk {
-	width: 64px;
-	height: 64px;
-	cursor: pointer;
 	box-shadow: none;
+	cursor: pointer;
+	height: 64px;
+	width: 64px;
 }
-.perk:hover,
-.alternatives .perk:hover {
-	box-shadow: 0px 1px 0px var(--text-strong);
+.perk:hover, .alternatives .perk:hover {
+	box-shadow: 0 1px 0 var(--text-strong);
 }
-/*
-
-Perk description modal
-
-*/
 .modalbg {
-	background-color: rgba(0, 0, 0, 0.66);
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
 	display: flex;
+	align-items: center;
+	background-color: rgba(0, 0, 0, .66);
 	flex-direction: column;
 	gap: 15px;
+	inset: 0;
 	justify-content: center;
-	align-items: center;
+	position: fixed;
 }
 .modal {
-	padding: 20px 40px;
-	width: 70%;
+	background-color: var(--bg-secondary);
+	border-radius: 8px;
 	height: fit-content;
 	max-height: 90%;
 	overflow-y: auto;
-	border-radius: 8px;
-	background-color: var(--bg-secondary);
+	padding: 20px 40px;
+	width: 70%;
 }
 .alternatives {
-	position: absolute;
-	top: -8px;
-	right: -8px;
-	background-color: var(--bg-primary);
-	border-radius: 50%;
-	padding: 2px;
-	width: 34px;
-	height: 34px;
 	display: flex;
 	align-items: center;
+	background-color: var(--bg-primary);
+	border-radius: 50%;
+	height: 34px;
 	justify-content: center;
+	padding: 2px;
+	position: absolute;
+	right: -8px;
+	top: -8px;
+	width: 34px;
 	z-index: 2;
 }
 .alternatives .perk {
-	width: 28px;
+	box-shadow: none;
+	cursor: default;
 	height: 28px;
 	margin: 0;
-	cursor: default;
-	box-shadow: none;
+	width: 28px;
 }
 .perkDescription {
 	font-size: large;
 	white-space: break-spaces;
 }
 .perkImage {
-	float: right;
 	filter: drop-shadow(4px 4px 8px var(--bg-primary));
+	float: right;
 }
 .perkCharacter {
 	margin: 0;
 }
-/*
-
-Scroll
-
-*/
 ::-webkit-scrollbar {
 	width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-	border-radius: 4px;
 	background-color: var(--text-normal);
+	border-radius: 4px;
 }
 ::-webkit-scrollbar-track {
 	background-color: transparent;
 }
-/*
-
-Changes for mobile
-
-*/
 @media screen and (max-width: 800px) {
 	.characters, .builds {
 		grid-template-columns: auto;
 	}
 	.character {
-		grid-template:
-			"name"
-			"build";
-		grid-template-rows: auto;
+		grid-template: "name" "build";
 		grid-template-columns: auto;
-		min-width: 300px;
+		grid-template-rows: auto;
 		height: 600px;
+		min-width: 300px;
 	}
 	.character > .image {
-		position: absolute;
-		bottom: 0;
-		height: calc(100% - 50px);
-		filter: blur(3px);
-		left: 0;
-		right: 0;
-		margin: auto;
-		max-width: 100%;
-		max-height: 100%;
 		display: flex;
+		bottom: 0;
+		filter: blur(3px);
+		height: calc(100% - 50px);
+		left: 0;
+		margin: auto;
+		max-height: 100%;
+		max-width: 100%;
+		position: absolute;
+		right: 0;
 	}
 	.image > img {
 		max-width: 100%;
 	}
-	.modal,
-	.alternatives {
-		width: 90%;
+	.modal, .alternatives {
 		padding: 10px 20px;
+		width: 90%;
 	}
 	.perkImage {
 		display: none;
