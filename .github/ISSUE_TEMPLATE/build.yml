@@ -62,3 +62,22 @@ body:
       placeholder: Your name
     validations:
       required: true
+
+  - type: textarea
+    id: json_preview
+    attributes:
+      label: JSON Preview
+      description: "Copy and paste this content into a new file."
+      default: |
+        {
+          "name": "${{ build_name }} Build",
+          "perks": [
+            "${{ perk1 }}",
+            "${{ perk2 }}",
+            "${{ perk3 }}",
+            "${{ perk4 }}"
+          ],
+          "altperks": ["", "", "", ""],
+          ${{ if eq(type, "Survivor") }} "group": "General" ${{ else }} "killer": "" ${{ end }},
+          "author": "${{ author }}"
+        }
