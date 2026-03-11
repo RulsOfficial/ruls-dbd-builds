@@ -30,7 +30,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       survivorsGrouped[build.group].push(build);
     });
 
-    survivorsContainer.innerHTML = Object.entries(survivorsGrouped).map(([groupName, builds]) => {
+    const groupOrder = Object.keys(survivorPortraits);
+    const sortedSurvivorGroups = groupOrder
+      .filter(group => survivorsGrouped[group])
+      .map(group => [group, survivorsGrouped[group]]);
+
+    survivorsContainer.innerHTML = sortedSurvivorGroups.map(([groupName, builds]) => {
     const survivorImage = survivorPortraits[groupName] || "https://deadbydaylight.wiki.gg/images/placeholder.png";
 
     return `
@@ -197,5 +202,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error cargando datos:', e);
   }
 });
-
-
