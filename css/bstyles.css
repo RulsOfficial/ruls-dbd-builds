@@ -4,12 +4,8 @@
   padding: 0;
 }
 :root {
-  --accent: #0487d2;
-  --accent-rgb: 4,135,210;
-}
-body.killer {
-  --accent: #f88300;
-  --accent-rgb: 248,131,0;
+  --accent: #9b59b6;
+  --accent-rgb: 155,89,182;
 }
 body {
   background: rgb(49,49,49);
@@ -23,12 +19,7 @@ body {
   max-width: 700px;
 }
 h1 {
-  background:
-    linear-gradient(
-      90deg,
-      var(--accent),
-      var(--accent)
-    );
+  background: linear-gradient(90deg,var(--accent),var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1.75rem;
