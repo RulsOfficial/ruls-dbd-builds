@@ -17,6 +17,4 @@ This project is heavily inspired by [Mr.Tipson's repository](https://github.com/
 2. Run the following command:  
    ```bash
    chmod +x update.sh ; ./update.sh
-
-
-
+   ```
