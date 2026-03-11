@@ -7,7 +7,7 @@ This project is heavily inspired by [Mr.Tipson's repository](https://github.com/
 
 ## Customization
 
-- By adding JSON files to **`survivor-builds`** and **`killer-builds`** folders, you can attach your own builds.  
+- You can add your own builds by placing JSON files in the **`survivor-builds`** and **`killer-builds`** folders. 
 - In **`survivor-groups.json`** you can create groups to organize survivor builds by categories.
 
 
@@ -17,5 +17,6 @@ This project is heavily inspired by [Mr.Tipson's repository](https://github.com/
 2. Run the following command:  
    ```bash
    chmod +x update.sh ; ./update.sh
+
 
 
