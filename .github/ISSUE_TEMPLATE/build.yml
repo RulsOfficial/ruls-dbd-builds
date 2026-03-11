@@ -1,7 +1,8 @@
 name: Propose Build
 description: Submit your own build to the project.
-title: "{{github.actor}}-{{now}}"
-labels: ["build"]
+title: "Build: New"
+labels:
+  - build
 
 body:
   - type: input
