@@ -1,13 +1,21 @@
 name: Propose Build
-description: Submit your own build to the proyect.
-title: " "
+description: Submit your own build to the project.
+title: "{{github.actor}}-{{now}}"
 labels: ["build"]
 
 body:
+  - type: input
+    id: build_name
+    attributes:
+      label: Build Name
+      placeholder: Anti-Slug Build
+    validations:
+      required: true
+
   - type: dropdown
     id: type
     attributes:
-      label: Build type
+      label: Build Type
       options:
         - Survivor
         - Killer
