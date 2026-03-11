@@ -7,9 +7,17 @@ on:
 jobs:
   create-build:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'build') }}
 
     steps:
+      - name: Check if Issue has build label
+        run: |
+          LABELS=$(jq -r '.issue.labels[].name' $GITHUB_EVENT_PATH)
+          echo "Labels: $LABELS"
+          if ! echo "$LABELS" | grep -q '^build$'; then
+            echo "Issue does not have the build label, skipping workflow."
+            exit 0
+          fi
+
       - uses: actions/checkout@v4
 
       - name: Set up Node.js
