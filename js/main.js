@@ -2,199 +2,83 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const GITHUB_BRANCH = 'dev';
 
-    async function loadBuildsFromFolder(folderPath) {
-      const apiUrl = `https://api.github.com/repos/RulsOfficial/ruls-dbd-builds/contents/${folderPath}?ref=${GITHUB_BRANCH}`;
-      const files = await fetch(apiUrl).then(r => r.json());
-      const jsonFiles = files.filter(f => f.name.endsWith('.json'));
-      const builds = await Promise.all(
-        jsonFiles.map(f => fetch(f.download_url).then(r => r.json()))
-      );
-      return builds;
-    }
+    const loadBuilds = async (folder) => {
+      const files = await fetch(`https://api.github.com/repos/RulsOfficial/ruls-dbd-builds/contents/${folder}?ref=${GITHUB_BRANCH}`).then(r => r.json());
+      return Promise.all(files.filter(f => f.name.endsWith('.json')).map(f => fetch(f.download_url).then(r => r.json())));
+    };
 
-    const survivorBuilds = await loadBuildsFromFolder('data/survivor-builds');
-    const killerBuilds = await loadBuildsFromFolder('data/killer-builds');
+    const [survivorBuilds, killerBuilds, survivorPerks, killerPerks, survivorPortraits] = await Promise.all([
+      loadBuilds('data/survivor-builds'),
+      loadBuilds('data/killer-builds'),
+      fetch('./data/survivor-perks.json?v=' + Date.now()).then(r => r.json()),
+      fetch('./data/killer-perks.json?v=' + Date.now()).then(r => r.json()),
+      fetch('./data/survivor-groups.json?v=' + Date.now()).then(r => r.json())
+    ]);
 
-    const survivorPerks = await fetch('./data/survivor-perks.json?v=' + Date.now()).then(r => r.json());
-    const killerPerks = await fetch('./data/killer-perks.json?v=' + Date.now()).then(r => r.json());
-
-    const survivorsContainer = document.getElementById('survivors');
-    const killersContainer = document.getElementById('killers');
-    const killerSidebar = document.getElementById('killerSidebar');
-
-    const survivorPortraits = await fetch('./data/survivor-groups.json?v=' + Date.now()).then(r => r.json())
-
-    const survivorsGrouped = {};
-    survivorBuilds.forEach(build => {
-      if (!survivorsGrouped[build.group]) survivorsGrouped[build.group] = [];
-      survivorsGrouped[build.group].push(build);
-    });
-
-    const groupOrder = Object.keys(survivorPortraits);
-    const sortedSurvivorGroups = groupOrder
-      .filter(group => survivorsGrouped[group])
-      .map(group => [group, survivorsGrouped[group]]);
-
-    survivorsContainer.innerHTML = sortedSurvivorGroups.map(([groupName, builds]) => {
-    const survivorImage = survivorPortraits[groupName] || "https://deadbydaylight.wiki.gg/images/placeholder.png";
-
-    return `
-      <div class="character" id="${groupName}">
-        <h3 class="characterName">${groupName}</h3>
-        <div class="image">
-          <img alt="${groupName}" src="${survivorImage}">
-        </div>
-        <div class="builds">
-          ${builds.map(build => {
-            const altperks = build.altperks || [];
-            return `
-              <div class="build">
-                <div class="buildName">${build.name}</div>
-                <div class="perks">
-                  ${build.perks.map((perkName, i) => {
-                    const perk = survivorPerks.find(p => p.perkName === perkName);
-                    const altperks = build.altperks || [];
-                    const alt = altperks[i];
-                    const altObj = alt ? survivorPerks.find(p => p.perkName === alt) : null;
-                    return perk ? `
-                      <div class="perkWrapper">
-                        <img class="perk"
-                            title="${perk.perkName}"
-                            alt="${perk.perkName}"
-                            src="${perk.perkImage}"
-                            data-role="survivor"
-                            data-description="${perk.description}"
-                            data-character="${perk.character}"
-                            data-characterImage="${perk.characterImage || ''}"
-                            loading="lazy">
-                        ${altObj ? `
-                          <div class="alternatives" 
-                               title="${altObj.perkName}">
-                            <img class="perk"
-                              src="${altObj.perkImage}"
-                              alt="${altObj.perkName}"
-                              title="${altObj.perkName}"
-                              data-role="survivor"
-                              data-description="${altObj.description}"
-                              data-character="${altObj.character}"
-                              data-characterImage="${altObj.characterImage || ''}"
-                              loading="lazy">
-                          </div>
-                        ` : ''}
-                      </div>
-                    ` : '';
-                  }).join('')}
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
-  }).join('');
-    
-    const killerPortraits = {};
-    killerPerks.forEach(perk => {
-      if (perk.character && perk.characterImage) {
-        if (!killerPortraits[perk.character]) {
-          const imageUrl = perk.characterImage.startsWith('http')
-            ? perk.characterImage
-            : `https://deadbydaylight.wiki.gg${perk.characterImage}`;
-          killerPortraits[perk.character] = imageUrl;
-        }
-      }
-    });
-
-    const killersGrouped = {};
-    killerBuilds.forEach(build => {
-      if (!killersGrouped[build.killer]) killersGrouped[build.killer] = [];
-      killersGrouped[build.killer].push(build);
-    });
-
-    killerSidebar.innerHTML = Object.keys(killersGrouped)
-      .map(killerName => `<a href="#${killerName}">${killerName}</a>`)
-      .join('');
-
-    killersContainer.innerHTML = Object.entries(killersGrouped).map(([killerName, builds]) => {
-      const killerImage = killerPortraits[killerName] || "https://deadbydaylight.wiki.gg/images/placeholder.png";
-
+    const renderPerk = (perkName, altPerkName, perks, role) => {
+      const perk = perks.find(p => p.perkName === perkName);
+      if (!perk) return '';
+      const alt = altPerkName ? perks.find(p => p.perkName === altPerkName) : null;
       return `
-        <div class="character" id="${killerName}">
-          <h3 class="characterName">${killerName}</h3>
-          <div class="image">
-            <img alt="${killerName}" src="${killerImage}">
-          </div>
-          <div class="builds">
-            ${builds.map(build => `
-              <div class="build">
-                <div class="buildName">${build.name}</div>
-                <div class="perks">
-                  ${build.perks.map((perkName, i) => {
-                    const perk = killerPerks.find(p => p.perkName === perkName);
-                    const altperks = build.altperks || [];
-                    const alt = altperks[i];
-                    const altObj = alt ? killerPerks.find(p => p.perkName === alt) : null;
-                    return perk ? `
-                      <div class="perkWrapper">
-                        <img class="perk" title="${perk.perkName}" alt="${perk.perkName}"
-                            src="${perk.perkImage}" data-role="killer" 
-                            data-description="${perk.description}" 
-                            data-character="${perk.character}" 
-                            data-characterImage="${perk.characterImage || ''}" 
-                            loading="lazy">
-                        ${altObj ? `
-                          <div class="alternatives" 
-                               title="${altObj.perkName}">
-                            <img class="perk"
-                              src="${altObj.perkImage}"
-                              alt="${altObj.perkName}"
-                              title="${altObj.perkName}"
-                              data-role="survivor"
-                              data-description="${altObj.description}"
-                              data-character="${altObj.character}"
-                              data-characterImage="${altObj.characterImage || ''}"
-                              loading="lazy">
-                          </div>
-                        ` : ''}
-                      </div>
-                    ` : '';
-                  }).join('')}
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }).join('');
+        <div class="perkWrapper">
+          <img class="perk" title="${perk.perkName}" alt="${perk.perkName}" src="${perk.perkImage}"
+               data-role="${role}" data-description="${perk.description}" 
+               data-character="${perk.character}" data-characterImage="${perk.characterImage || ''}" loading="lazy">
+          ${alt ? `<div class="alternatives" title="${alt.perkName}">
+            <img class="perk" src="${alt.perkImage}" alt="${alt.perkName}" title="${alt.perkName}"
+                 data-role="${role}" data-description="${alt.description}" 
+                 data-character="${alt.character}" data-characterImage="${alt.characterImage || ''}" loading="lazy">
+          </div>` : ''}
+        </div>`;
+    };
+
+    const renderBuild = (build, perks, role) => `
+      <div class="build">
+        <div class="buildName">${build.name}</div>
+        <div class="perks">${build.perks.map((p, i) => renderPerk(p, build.altperks?.[i], perks, role)).join('')}</div>
+      </div>`;
+
+    const groupBy = (arr, key) => arr.reduce((acc, item) => {
+      (acc[item[key]] ||= []).push(item);
+      return acc;
+    }, {});
+
+    const survivorsGrouped = groupBy(survivorBuilds, 'group');
+    document.getElementById('survivors').innerHTML = Object.keys(survivorPortraits)
+      .filter(g => survivorsGrouped[g])
+      .map(g => `
+        <div class="character" id="${g}">
+          <h3 class="characterName">${g}</h3>
+          <div class="image"><img alt="${g}" src="${survivorPortraits[g]}"></div>
+          <div class="builds">${survivorsGrouped[g].map(b => renderBuild(b, survivorPerks, 'survivor')).join('')}</div>
+        </div>`).join('');
+
+    const killerPortraits = Object.fromEntries(
+      killerPerks.filter(p => p.character && p.characterImage)
+        .map(p => [p.character, p.characterImage.startsWith('http') ? p.characterImage : `https://deadbydaylight.wiki.gg${p.characterImage}`])
+    );
+
+    const killersGrouped = groupBy(killerBuilds, 'killer');
+    document.getElementById('killerSidebar').innerHTML = Object.keys(killersGrouped).map(k => `<a href="#${k}">${k}</a>`).join('');
+    document.getElementById('killers').innerHTML = Object.entries(killersGrouped).map(([k, builds]) => `
+      <div class="character" id="${k}">
+        <h3 class="characterName">${k}</h3>
+        <div class="image"><img alt="${k}" src="${killerPortraits[k] || 'https://deadbydaylight.wiki.gg/images/placeholder.png'}"></div>
+        <div class="builds">${builds.map(b => renderBuild(b, killerPerks, 'killer')).join('')}</div>
+      </div>`).join('');
 
     document.querySelectorAll('.perk').forEach(img => {
       img.addEventListener('click', () => {
         const modalBg = document.createElement('div');
         modalBg.className = 'modalbg';
-
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-
-        const perkName = img.getAttribute('alt');
-        const perkDescription = decodeURIComponent(img.dataset.description || '');
-        const perkCharacter = img.dataset.character || '';
-        const perkCharacterImage = img.dataset.characterImage || '';
-
-        modal.innerHTML = `
-          <h2>${perkName}</h2>
-          <p class="perkDescription">${perkDescription}</p>
-          <p class="perkCharacter">Character: ${perkCharacter}</p>
-          ${perkCharacterImage ? `<img class="perkImage" src="${perkCharacterImage}" alt="${perkCharacter}">` : ''}
-        `;
-
-        modalBg.appendChild(modal);
+        modalBg.innerHTML = `<div class="modal">
+          <h2>${img.alt}</h2>
+          <p class="perkDescription">${decodeURIComponent(img.dataset.description || '')}</p>
+          <p class="perkCharacter">Character: ${img.dataset.character || ''}</p>
+          ${img.dataset.characterimage ? `<img class="perkImage" src="${img.dataset.characterimage}" alt="${img.dataset.character}">` : ''}
+        </div>`;
         document.body.appendChild(modalBg);
-
-        modalBg.addEventListener('click', (e) => {
-          if (e.target === modalBg) {
-            modalBg.remove();
-          }
-        });
+        modalBg.addEventListener('click', e => e.target === modalBg && modalBg.remove());
       });
     });
 
