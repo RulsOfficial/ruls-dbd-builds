@@ -1,6 +1,6 @@
 name: Propose Build
 description: Submit your own build to the proyect.
-title: "Build: "
+title: ""
 labels: ["build"]
 
 body:
