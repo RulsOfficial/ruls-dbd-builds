@@ -1,4 +1,4 @@
-name: Create Build from Issue
+name: Create Simple Build from Issue
 
 on:
   issues:
@@ -16,41 +16,46 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate JSON build and PR
+      - name: Generate JSON and PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Instalar dependencias
+          # Instalar gh y jq
           npm install -g gh jq
 
-          # Leer campos del issue
+          # Leer campos del Issue
           ISSUE_BODY=$(jq -r '.issue.body' $GITHUB_EVENT_PATH)
-          NAME=$(echo "$ISSUE_BODY" | grep '^name:' | cut -d':' -f2- | xargs)
-          TYPE=$(echo "$ISSUE_BODY" | grep '^type:' | cut -d':' -f2- | xargs)
-          KILLER=$(echo "$ISSUE_BODY" | grep '^killer:' | cut -d':' -f2- | xargs)
-          PERKS=$(echo "$ISSUE_BODY" | grep '^perks:' | cut -d':' -f2- | xargs)
-          ALTPERKS=$(echo "$ISSUE_BODY" | grep '^altperks:' | cut -d':' -f2- | xargs)
-          GROUP=$(echo "$ISSUE_BODY" | grep '^group:' | cut -d':' -f2- | xargs)
+          TYPE=$(echo "$ISSUE_BODY" | grep '^type:' | cut -d':' -f2 | xargs)
           AUTHOR=$(echo "$ISSUE_BODY" | grep '^author:' | cut -d':' -f2- | xargs)
+          NAME="New Build"   # Puedes poner el nombre genérico o extraerlo de otra línea si quieres
+
+          # Leer perks
+          PERK1=$(echo "$ISSUE_BODY" | grep '^perk1:' | cut -d':' -f2- | xargs)
+          PERK2=$(echo "$ISSUE_BODY" | grep '^perk2:' | cut -d':' -f2- | xargs)
+          PERK3=$(echo "$ISSUE_BODY" | grep '^perk3:' | cut -d':' -f2- | xargs)
+          PERK4=$(echo "$ISSUE_BODY" | grep '^perk4:' | cut -d':' -f2- | xargs)
+
+          # Crear array de perks y ordenar
+          PERKS_ARRAY=($PERK1 $PERK2 $PERK3 $PERK4)
+          SORTED_PERKS=$(printf '%s\n' "${PERKS_ARRAY[@]}" | sort | paste -sd',' -)
 
           # Añadir "Build" al nombre si no lo tiene
           if [[ "$NAME" != *build* ]]; then
             NAME="$NAME Build"
           fi
 
-          # Ordenar perks alfabéticamente
-          IFS=',' read -ra PERK_ARRAY <<< "$PERKS"
-          SORTED_PERKS=$(printf '%s\n' "${PERK_ARRAY[@]}" | sort | paste -sd',' -)
-
           # Formatear nombre de archivo
           FILE_NAME=$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -d "'")
 
-          if [[ "$TYPE" == "Killer" ]]; then
+          # Elegir carpeta
+          if [[ "$TYPE" == "Survivor" ]]; then
+            FOLDER="data/survivor-builds"
+          else
+            FOLDER="data/killer-builds"
+            # Para killer, añadir el nombre del killer si se proporcionó
+            KILLER=$(echo "$ISSUE_BODY" | grep '^killer:' | cut -d':' -f2- | xargs)
             KILLER_NAME=$(echo "$KILLER" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
             FILE_NAME="${FILE_NAME}-${KILLER_NAME}"
-            FOLDER="data/killer-builds"
-          else
-            FOLDER="data/survivor-builds"
           fi
 
           mkdir -p $FOLDER
@@ -59,8 +64,8 @@ jobs:
           echo "{
   \"name\": \"$NAME\",
   \"perks\": [$(echo $SORTED_PERKS | sed 's/,/","/g' | sed 's/^/"/' | sed 's/$/"/')],
-  \"altperks\": [$(echo $ALTPERKS | sed 's/,/","/g' | sed 's/^/"/' | sed 's/$/"/')],
-  $(if [[ "$TYPE" == "Survivor" ]]; then echo "\"group\": \"$GROUP\","; else echo "\"killer\": \"$KILLER\","; fi)
+  \"altperks\": [\"\",\"\",\"\",\"\"],
+  $(if [[ "$TYPE" == "Survivor" ]]; then echo "\"group\": \"General\","; else echo "\"killer\": \"$KILLER\","; fi)
   \"author\": \"$AUTHOR\"
 }" > $FOLDER/$FILE_NAME.json
 
