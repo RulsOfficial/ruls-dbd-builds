@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const GITHUB_BRANCH = 'dev';
     const loadBuilds = async (folder) => {
-      const files = await fetch(`https://api.github.com/repos/RulsOfficial/ruls-dbd-builds/contents/${folder}?ref=${GITHUB_BRANCH}`).then(r => r.json());
+      const files = await fetch(`https://api.github.com/repos/RulsOfficial/ruls-dbd-builds/contents/${folder}?ref=main`).then(r => r.json());
       return Promise.all(files.filter(f => f.name.endsWith('.json')).map(f => fetch(f.download_url).then(r => r.json())));
     };
     const [survivorBuilds, killerBuilds, survivorPerks, killerPerks, survivorPortraits] = await Promise.all([
@@ -71,3 +70,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error cargando datos:', e);
   }
 });
+
