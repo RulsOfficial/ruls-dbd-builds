@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <h2>${img.alt}</h2>
           <p class="perkDescription">${decodeURIComponent(img.dataset.description || '')}</p>
           <p class="perkCharacter">Character: ${img.dataset.character || ''}</p>
-          ${img.dataset.characterimage ? `<img class="perkImage" src="https://deadbydaylight.wiki.gg/${img.dataset.characterimage}" alt="${img.dataset.character}">` : ''}
+          ${img.dataset.characterimage ? `<img class="perkImage" src="https://deadbydaylight.wiki.gg${img.dataset.characterimage}" alt="${img.dataset.character}">` : ''}
         </div>`;
         document.body.appendChild(modalBg);
         modalBg.addEventListener('click', e => e.target === modalBg && modalBg.remove());
@@ -70,4 +70,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error cargando datos:', e);
   }
 });
+
 
