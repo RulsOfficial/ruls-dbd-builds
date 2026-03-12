@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           <h2>${img.alt}</h2>
           <p class="perkDescription">${decodeURIComponent(img.dataset.description || '')}</p>
           <p class="perkCharacter">Character: ${img.dataset.character || ''}</p>
-          ${img.dataset.perkimage ? `<img class="perkImage" src="${img.dataset.perkimage}">` : ''}
         </div>`;
         document.body.appendChild(modalBg);
         modalBg.addEventListener('click', e => e.target === modalBg && modalBg.remove());
@@ -70,6 +69,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Error cargando datos:', e);
   }
 });
+
 
 
 
